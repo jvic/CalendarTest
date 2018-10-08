@@ -87,8 +87,9 @@ class Calendar implements CalendarInterface
     {
         $day = new DateTime($this->date->format('Y-m-01'));
 
-        if ($this->getFirstWeekDay() !== 1) {
-            $day->modify('-' . ($this->getFirstWeekDay() - 1) . ' day');
+        $fwd = $this->getFirstWeekDay() - 1;
+        if ($fwd) {
+            $day->modify("-{$fwd} day");
         }
 
         $res = [];
